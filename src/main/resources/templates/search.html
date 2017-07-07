@@ -36,7 +36,7 @@
 
     <hr />
 
-    <table class="job-listing" th:each="job : ${joblist}">
+    <table class="job-listing" th:each="job : ${jobList}">
         <tr th:each="entry : ${job}">
             <td th:text="${entry.key}"></td>
             <td th:text="${entry.value}"></td>
