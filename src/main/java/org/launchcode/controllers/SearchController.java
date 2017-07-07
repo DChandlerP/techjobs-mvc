@@ -22,12 +22,13 @@ public class SearchController {
         return "search";
     }
 
+    //Got this straight from the tutorials
     @RequestMapping(value = "results")
     public String search(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
-
         ArrayList<HashMap<String, String>> jobList;
 
-        if (searchType.equals("") || searchType.equals("all")){
+        // 1st condition is if nothing is entered, second is if all is selected.
+        if (searchType.equals("") || searchType.equals("all") ||){
             jobList = JobData.findByValue(searchTerm);
         }
         else{
