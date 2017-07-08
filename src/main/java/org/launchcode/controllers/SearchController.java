@@ -25,20 +25,24 @@ public class SearchController {
     //Got this straight from the tutorials
     @RequestMapping(value = "results")
     public String search(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
-        ArrayList<HashMap<String, String>> jobList;
 
         // 1st condition is if nothing is entered, second is if all is selected.
-        if (searchType.equals("") || searchType.equals("all") ||){
+        if (searchType.equals("") || searchType.equals("all")){
+            ArrayList<HashMap<String, String>> jobList;
             jobList = JobData.findByValue(searchTerm);
+            model.addAttribute("columns", ListController.columnChoices);
+            model.addAttribute("jobList", jobList);
+            return "search";
         }
+        //HashMap populates different based on params given
         else{
+            ArrayList<HashMap<String, String>> jobList;
             jobList = JobData.findByColumnAndValue(searchType, searchTerm);
+            model.addAttribute("columns", ListController.columnChoices);
+            model.addAttribute("jobList", jobList);
+            return "search";
         }
 
-        model.addAttribute("columns", ListController.columnChoices);
-        model.addAttribute("jobList", jobList);
-
-        return "search";
     }
 
 }
