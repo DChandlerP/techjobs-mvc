@@ -18,6 +18,7 @@ public class SearchController {
 
     @RequestMapping(value = "")
     public String search(Model model) {
+        // adds radial buttons!
         model.addAttribute("columns", ListController.columnChoices);
         return "search";
     }
